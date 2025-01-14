@@ -1,4 +1,4 @@
-const localMapToken = process.env.MAP_TOKEN;  // Your MapTiler token
+const localMapToken = "jvNsubd8oh6kj4PYxVEr";  // Your MapTiler token
 const map = L.map('map').setView([49.2125578, 16.62662018], 14);
 
         // Add tile layer to the map
