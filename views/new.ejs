@@ -1,0 +1,77 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+    <div class="form-container">
+        <h3 class="form-title">Add New Listing</h3>
+        <form action="/listings" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+            <!-- Title Input -->
+            <div class="newformdiv">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" id="title" name="listing[title]" class="form-input form-control" placeholder="Enter title" required> 
+                <div class="invalid-feedback">
+                    Please Enter the title
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- Description Input -->
+            <div class="newformdiv">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" name="listing[description]" class="form-textarea form-control" placeholder="Enter description" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please fill the description
+                </div>
+            </div>
+
+            <!-- Image URL Input -->
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Listing image : </label>
+                <input type="file" class="form-control form-control" name="listing[image]" required>
+            </div>
+
+            <!-- Price Input -->
+            <div class="newformdiv">
+                <label for="price" class="form-label">Price:</label>
+                <input type="text" id="price" name="listing[price]" class="form-input form-control" placeholder="Enter price" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please Enter Price
+                </div>
+            </div>
+
+            <div class="newformdiv">
+                <label for="location" class="form-label">City:</label>
+                <input type="text" id="location-input" name="listing[location]" class="form-input form-control" placeholder="Enter city" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please Enter Location
+                </div>
+            </div>
+            
+            <div class="newformdiv">
+                <label for="country" class="form-label">Country:</label>
+                <input type="text" id="country" name="listing[country]" class="form-input form-control" placeholder="Enter country" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please Enter Country name
+                </div>
+            </div>
+            
+            <!-- Button to trigger the map location search -->
+            <button type="submit" id="search-button" class="form-button">Add Listing</button>
+            
+
+        </form>
+    </div>
+</body>
+<script src="/js/map.js"></script>
