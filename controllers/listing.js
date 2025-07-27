@@ -2,8 +2,18 @@ const Listing = require("../models/listing");
 
 // Index Route
 module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("index.ejs", { allListings }); // Variable matches the EJS file
+    const { search } = req.query;
+    let allListings;
+
+    if (search) {
+        // Search by title (case-insensitive)
+        const regex = new RegExp(search, 'i');
+        allListings = await Listing.find({ title: regex });
+    } else {
+        allListings = await Listing.find({});
+    }
+
+    res.render("index.ejs", { allListings });
 };
 
 // New Route
@@ -22,8 +32,6 @@ module.exports.showListing = async (req, res) => {
         req.flash("error", "Listing you requested for does not exist");
         return res.redirect("/listings");
     }
-
-    console.log(listing);
     res.render("show.ejs", { listing });
 };
 

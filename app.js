@@ -1,6 +1,4 @@
-if(process.env.NODE_ENV != "production"){
-  require('dotenv').config();
-}
+require('dotenv').config()
 
 const express = require("express");
 const app = express();
@@ -20,13 +18,13 @@ const userRouter = require("./routes/user.js");
 const MongoStore = require('connect-mongo');
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views")); // Fixed dirname issue
+app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
-// ("mongodb://127.0.0.1:27017/Wanderlust")
+
 const dbUrl = process.env.ATLASDB_URL;
 // MongoDB connection
 async function main() {
@@ -104,5 +102,5 @@ app.use((err, req, res, next) => {
 // Start server
 const PORT = 8000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);  // Fixed template literal
+  console.log(`Server running on port http://localhost:${PORT}`);  // Fixed template literal
 });
