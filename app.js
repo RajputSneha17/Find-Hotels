@@ -16,6 +16,17 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const userRouter = require("./routes/user.js");
 const MongoStore = require("connect-mongo");
+const cron = require('node-cron');
+const axios = require('axios');
+
+cron.schedule('*/10 * * * *', async () => { 
+  try {
+    await axios.get('https://find-hotels-1.onrender.com'); 
+    console.log('server start again');
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+});
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
